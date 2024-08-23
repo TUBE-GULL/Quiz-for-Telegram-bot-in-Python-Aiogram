@@ -18,4 +18,7 @@ async def result_quiz(callback: CallbackQuery, correct_answers: list[int]):
     final_grade = new_grade if new_grade > grade else grade
     #  записывааю результат 
     await db.write_database(callback.from_user.id, final_grade, 'grade')
-    await callback.message.answer(f"Ваша оценка {new_grade} ваша прошлая оценка {grade}: правильных ответов {answer_true}, неправильных ответов {answer_false}")
+    if grade == 0:
+        await callback.message.answer(f"Ваша оценка {new_grade}: правильных ответов {answer_true}, неправильных ответов {answer_false}")
+    else:    
+        await callback.message.answer(f"Ваша оценка {new_grade} ваша прошлая оценка {grade}: правильных ответов {answer_true}, неправильных ответов {answer_false}")
