@@ -52,10 +52,10 @@ def generate_options_keyboard(answer_options):
 
 
 def create_confirmation_keyboard():
-    keyboard = InlineKeyboardMarkup()  # Создаем клавиатуру без параметра row_width
+    keyboard = InlineKeyboardMarkup()  
     confirm_button = InlineKeyboardButton("Да", callback_data="confirm_yes")
     cancel_button = InlineKeyboardButton("Нет", callback_data="confirm_no")
-    keyboard.add(confirm_button, cancel_button)  # Добавляем кнопки
+    keyboard.add(confirm_button, cancel_button) 
     return keyboard
 
 confirmation_keyboard = InlineKeyboardMarkup(inline_keyboard=[

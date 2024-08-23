@@ -15,7 +15,7 @@ class QuizeDatabase:
                 CREATE TABLE IF NOT EXISTS quiz_state (
                     user_id INTEGER PRIMARY KEY, 
                     question_index INTEGER DEFAULT 0, 
-                    correct_answers INTEGER DEFAULT '[0,0,0,0,0,0,0,0,0,0]',  -- Значение по умолчанию 0,  
+                    correct_answers INTEGER DEFAULT '[0,0,0,0,0,0,0,0,0,0]',  
                     grade INTEGER DEFAULT 0,
                     choice INTEGER 
                     )
@@ -47,7 +47,11 @@ class QuizeDatabase:
                 correct_answers = json.loads(correct_answers)  # correct_answers хранится как строка JSON
                 return question_index, correct_answers
             else:
-                return 0
+                 # Если пользователь не найден, создаем новую запись
+                 await db.execute('INSERT INTO quiz_state (user_id, question_index, correct_answers) VALUES (?, ?, ?)', 
+                                  (user_id, 0, json.dumps([0]*10)))
+                 await db.commit()
+                 return 0, [0]*10  # Возвращаем начальные значения
    
     
     # запись любого зн 

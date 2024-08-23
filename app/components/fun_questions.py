@@ -7,7 +7,7 @@ db = QuizeDatabase()
 async def get_question(message, user_id):
 
     # Запрашиваем из базы текущий индекс для вопроса
-    question_index, correct_answers = await db.get_quiz_data_user(user_id)    
+    question_index, correct_answers = await db.get_quiz_data_user(user_id)  
     # Получаем список вариантов ответа для текущего вопроса
     opts = quiz_data[question_index]['options']
 
