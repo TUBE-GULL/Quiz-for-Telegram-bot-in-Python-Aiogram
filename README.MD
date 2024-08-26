@@ -34,8 +34,6 @@ $ python main.py
 Bot Username: `@TetroMancer_bot`  
 Link to Bot: [@TetroMancer_bot](https://web.telegram.org/k/#@TetroMancer_bot)
 
-## Описание команд
-
 ### /start
 
 This command starts the bot and greets the user. Upon invoking the command, the bot sends a welcome message and offers to start the game.

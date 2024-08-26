@@ -38,7 +38,7 @@ class QuizeDatabase:
     async def get_quiz_data_user(self, user_id):
      # Подключаемся к базе данных
      async with aiosqlite.connect(self.db_name) as db:
-        # Получаем запись для заданного пользователя
+        # Получаем запись для заданного пользователя()
         async with db.execute('SELECT user_id, question_index, correct_answers FROM quiz_state WHERE user_id = ?', (user_id,)) as cursor:
             # Возвращаем результат
             results = await cursor.fetchone()
@@ -72,4 +72,3 @@ class QuizeDatabase:
                     return results[0]
                 else:
                     return None 
-
